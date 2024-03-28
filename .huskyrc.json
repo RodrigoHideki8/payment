@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "pre-commit": ".git/hooks/commit-msg $1 && lint-staged && npm test"
+  }
+}

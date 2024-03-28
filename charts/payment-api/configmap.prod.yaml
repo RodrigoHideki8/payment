@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-api
+  namespace: default
+data:
+  PORT: "3000"
+  NODE_ENV: "production"
+  HOST: "0.0.0.0"
+  TZ: "America/Sao_Paulo"
+  MONGO_CONNECTION_STRING: "mongodb+srv://evermart_payment_api:pdI89rxE0Es2@mycheckout-prd.sihln.mongodb.net/payment_api"
+  POSTGRES_HOST: "payment-api-prod.cjfweuxdrma3.us-east-1.rds.amazonaws.com"
+  POSTGRES_PORT: "5432"
+  POSTGRES_USERNAME: "postgres"
+  POSTGRES_PASSWORD: "07NuUZ7zq31J"
+  POSTGRES_DATABASE: "payment_api"
+  PAYNET_URI: "string"
+  PAYNET_USER: "string"
+  PAYNET_PASS: "string"
+  PAYNET_ROUTE: "string"
+  PAGARME_URI: "https://api.pagar.me/core/v5"
+  PAGARME_USER_KEY: "sk_zqv0n0JcGUQaLyX1"
+  SENTRY_DSN: "https://o4504266198745088.ingest.sentry.io/4504854603890688"
+  GETNET_URI: "https://api.getnet.com.br/"
+  GETNET_CLIENT_ID: "e4764127-5320-4a1b-9633-770aee0370a7"
+  GETNET_CLIENT_SECRET: "857aafe1-8c38-455c-805d-72788c39634f"
+  SANTANDER_URI: "string"
+  SANTANDER_OAUTH_URI: "string"
+  SANTANDER_GRANT_TYPE: "string"
+  SANTANDER_CLIENT_ID: "string"
+  SANTANDER_CLIENT_SECRET: "string"
+  AMAZON_MQ_HOST: "b-b43d4dd3-cd05-4427-bebc-a76de9b0ce39.mq.us-east-1.amazonaws.com"
+  AMAZON_MQ_PORT: "5671"
+  AMAZON_MQ_USERNAME: "adminbroker"
+  AMAZON_MQ_PASSWORD: "RjQPKFF3QJ444eF>"
+  AMAZON_MQ_PROTOCOL: "amqps"
+  AMAZON_MQ_VHOST: ""
+  PAGARME_GATEWAYID: "39ae8050-3857-4dc7-91dc-fb86037394d6"
+
+

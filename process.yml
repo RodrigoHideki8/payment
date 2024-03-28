@@ -1,0 +1,5 @@
+apps:
+  - script   : './dist/src/main.js'
+    name     : 'payment-api'
+    instances: max
+    exec_mode: cluster

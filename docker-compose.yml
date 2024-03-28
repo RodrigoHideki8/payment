@@ -1,0 +1,60 @@
+version: '3.1'
+
+services:
+  event_store:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/docker-db-data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123654
+      POSTGRES_USER: root
+      POSTGRES_DB: eventStoreTestDb
+  query_stack:
+    image: mongo:6.0
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/docker-db-data/mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_ROOT_USERNAME: root
+  db_manager:
+    depends_on:
+      - event_store
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+       - 5672:5672
+       - 15672:15672
+    volumes:
+       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+       - rabbitmq_net
+
+    environment:
+       - RABBITMQ_DEFAULT_USER = admin
+       - RABBITMQ_DEFAULT_PASS = passw123
+
+    restart: always
+
+networks:
+  rabbitmq_net:
+    driver: bridge
